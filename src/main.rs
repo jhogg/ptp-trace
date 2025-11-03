@@ -109,6 +109,11 @@ async fn main() -> Result<()> {
         source::create_raw_socket_receiver(&cli.interface).await?
     };
 
+    // Initialize Application Components
+    // ... Text UI
+    // ... JSON API
+    // ... CLI
+
     // Initialize the application
     let update_interval = Duration::from_millis(cli.update_interval);
     let mut app = App::new(

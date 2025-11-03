@@ -208,7 +208,6 @@ pub struct ClockIdentity {
 }
 
 impl ClockIdentity {
-
     // (JH) NOTE: Not sure of the validity of the last 3 octets across all clocks. Only the first 3
     // are specified by 1588-2019 7.5.2.2
 

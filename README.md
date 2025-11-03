@@ -24,8 +24,7 @@ This is a development fork of holoplot/ptp-trace to work on some advanced featur
 ## Items to review / address
 
 - Internal use of BCMA to calculate PTT/Grandmaster has no awareness of clock scope/heirarchy, only Domain, and ignores steps removed.
-- I implemented VLAN at the host level, need to determine if it needs to move to IP or Interface level after Scope is implemented.
-- Need o review message ingest rate, which is currently limited to 100 per interval (default: 1s), which is well below the generation rate for a large network.  Compounded by a pause causing messages to back up.
+- Need to review message ingest rate, which is currently limited to 100 per interval (default: 1s), which is well below the generation rate for a large network.  Compounded by a pause causing messages to back up.
 - VLAN support for untagged VLAN's
 - Buffer limits on raw buffer ingest
 - Gracefully handle network interfaces disapearing / reappearing
