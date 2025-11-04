@@ -1625,7 +1625,7 @@ fn render_packet_details(
         )]),
         create_aligned_field(
             "Version:".to_string(),
-            header.version.to_string(),
+            format!("{}.{}", header.version, header.version_minor),
             LABEL_WIDTH,
             theme,
         ),
@@ -1635,7 +1635,7 @@ fn render_packet_details(
                 Style::default().fg(theme.text_secondary),
             ),
             Span::styled(
-                header.message_type.to_string(),
+                format!("({:x}) {}", header.message_type as u8, header.message_type),
                 theme.get_message_type_color(&header.message_type),
             ),
         ]),
@@ -1648,6 +1648,12 @@ fn render_packet_details(
         create_aligned_field(
             "Domain Number:".to_string(),
             header.domain_number.to_string(),
+            LABEL_WIDTH,
+            theme,
+        ),
+        create_aligned_field(
+            "Sdo Id:".to_string(),
+            format!("{:04x}", header.sdo_id),
             LABEL_WIDTH,
             theme,
         ),
@@ -1668,6 +1674,18 @@ fn render_packet_details(
             format!(
                 "{} ({})",
                 header.correction_field, header.correction_field.value
+            ),
+            LABEL_WIDTH,
+            theme,
+        ),
+        create_aligned_field(
+            "Message Specific:".to_string(),
+            format!(
+                "{:02x}{:02x}{:02x}{:02x}",
+                header.msg_specific[0],
+                header.msg_specific[1],
+                header.msg_specific[2],
+                header.msg_specific[3]
             ),
             LABEL_WIDTH,
             theme,
